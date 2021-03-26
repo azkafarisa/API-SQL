@@ -17,6 +17,13 @@ const getAll = (req, res) => {
       });
     }
 
+    //change date to our time zone
+    const date = new Date();
+    if (results) {
+      results.forEach((item, i) => {
+        item.updatedAt = new Date(results[0].updatedAt-date.getTimezoneOffset()*60000);
+      });
+    }
     // If no error, it will go here
     return res.status(200).json({
       message: "Success",
@@ -38,6 +45,12 @@ const getOne = (req, res) => {
       });
     }
 
+    //change date to our time zone
+    const date = new Date();
+    //change date to our timezone
+    if (results[0]) {
+      results[0].updatedAt = new Date(results[0].updatedAt-date.getTimezoneOffset()*60000);
+    }
     // If no error, it will go here
     return res.status(200).json({
       message: "Success",
@@ -123,6 +136,7 @@ const update = (req, res) => {
     connection.query(sqlGetCount, [req.body.id_barang], (err, results) => {
       //get change count / berapa kali diubah/update
       let count = eval(results[0].changeCount) + 1;
+
       //get date for now then convert to mysql format
       const date = new Date();
       let convertedDate = new Date(date.valueOf()-(date.getTimezoneOffset()*60000));
@@ -130,6 +144,7 @@ const update = (req, res) => {
         .toISOString()
         .slice(0, 19)
         .replace("T", " ");
+        console.log(mysqlDate);
 
       let sqlUpdate =
         "UPDATE transaksi SET id_barang = ?, id_pelanggan = ?, jumlah = ?, total = ? , updatedAt = ?, changeCount = ? WHERE deletedAt IS NULL AND transaksi.id = ?";
@@ -167,6 +182,10 @@ const update = (req, res) => {
               });
             }
 
+            //change date to our time zone
+            if (results[0]) {
+              results[0].updatedAt = new Date(results[0].updatedAt-date.getTimezoneOffset()*60000);
+            }
             // If no error, it will go here
             return res.status(200).json({
               message: "Success",
