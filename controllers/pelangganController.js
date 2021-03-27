@@ -1,4 +1,4 @@
-const connection = require("../Models");
+const connection = require("../models");
 
 const getAll = (req, res) => {
   let sql = "SELECT * FROM pelanggan";

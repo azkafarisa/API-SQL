@@ -2,7 +2,7 @@ const express = require("express"); //import express
 const router = express.Router(); //make a router
 
 //import controller
-const pelangganController = require("../Controller/pelangganController");
+const pelangganController = require("../controllers/pelangganController");
 
 //defines routes
 // If user go to http://localhost:3000/transaksi (GET)
