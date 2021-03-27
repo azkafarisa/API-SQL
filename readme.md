@@ -4,7 +4,9 @@
 2. Risa (@azkafarisa)
 3. Jhorgi (@jhorgihisamawa)
 4. Karina (@karinasarahk)
+
 **Reviewer :** Fahmi Alfareza (@fahmialfareza)
+
 ### Example Test CRUD Barang
 
 ![barang.gif](./barang.gif)
