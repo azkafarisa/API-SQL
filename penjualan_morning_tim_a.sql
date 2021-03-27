@@ -39,3 +39,26 @@ CREATE TABLE transaksi (
     total DECIMAL NOT NULL
 );
 /* END CREATE TABLE */
+
+INSERT INTO pelanggan(nama) VALUES
+	("Risa"),
+	("Dedi"),
+	("Abi");
+
+INSERT INTO pelanggan(nama) VALUES
+	("Riko");
+
+INSERT INTO pemasok(nama,no_telp) VALUES
+	("Jhorgi","019994012"),
+	("Kamal","0199945552"),
+	("Amril","01999123132");
+
+INSERT INTO barang(nama, harga, id_pemasok) VALUES
+	("Pepsodent", 14500, 1),
+	("Clear", 24600, 2),
+	("Close Up", 15700, 3);
+
+INSERT INTO transaksi(id_barang, id_pelanggan, jumlah, total) VALUES
+	(1, 1, 1, 14500),
+	(2, 2, 2, 49200),
+	(3, 3, 3, 47100);
